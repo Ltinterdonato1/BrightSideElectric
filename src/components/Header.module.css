@@ -9,9 +9,9 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px; /* Increased to push items further apart */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4rem; /* Balanced padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,11 +39,20 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem; /* Increased gap for better spread */
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    gap: 1.5rem;
+  }
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 @media (max-width: 768px) {

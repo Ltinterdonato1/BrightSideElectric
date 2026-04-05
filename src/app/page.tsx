@@ -1,23 +1,23 @@
 import VideoHero from '@/components/VideoHero';
 import ServiceCard from '@/components/ServiceCard';
-import { Home, Building2, Store, School, Shield, Zap } from 'lucide-react';
+import { Home, Building2, Store, School, Shield, Zap, Sun } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function LandingPage() {
   return (
     <div className={styles.container}>
       <VideoHero 
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-working-on-an-electrical-panel-41662-large.mp4"
-        title="Walla Walla's Next Generation of Power"
-        subtitle="Residential • Commercial • Industrial"
+        videoUrl="https://www.youtube.com/watch?v=ChEs3fdkNCc"
+        title="Next Generation of Power"
+        subtitle="Residential • Commercial • Solar"
         ctaText="Get a Free Estimate"
         ctaLink="/contact"
       />
 
       <section className={styles.servicesSection}>
         <div className={styles.sectionHeader}>
-          <h2>Expert Solutions</h2>
-          <p>From residential repairs to large-scale commercial installations, we bring the bright side to every project.</p>
+          <h2>Bringing the Bright Side </h2>
+          <h2>to Every Project</h2>
         </div>
 
         <div className={styles.grid}>
@@ -34,28 +34,10 @@ export default function LandingPage() {
             href="/commercial"
           />
           <ServiceCard 
-            title="Storefronts"
-            description="Custom lighting design and power solutions to make your business stand out."
-            Icon={Store}
-            href="/commercial"
-          />
-          <ServiceCard 
-            title="Schools"
-            description="Reliable electrical infrastructure and maintenance for educational institutions."
-            Icon={School}
-            href="/commercial"
-          />
-          <ServiceCard 
-            title="Security"
-            description="Advanced surveillance, alarm systems, and access control for peace of mind."
-            Icon={Shield}
-            href="/commercial"
-          />
-          <ServiceCard 
             title="Solar & EV"
-            description="Future-proof your property with solar panels and electric vehicle charging stations."
-            Icon={Zap}
-            href="/residential"
+            description="Harness the sun with custom solar panel installations and EV charging stations."
+            Icon={Sun}
+            href="/solar"
           />
         </div>
       </section>
@@ -65,20 +47,29 @@ export default function LandingPage() {
           <h2>Why Bright Side?</h2>
           <p>
             Unlike other contractors who focus on the minimum, we focus on the **Bright Side**. 
-            That means transparent pricing, high-end visual documentation of our work via drone shots, 
-            and a level of professionalism that Walla Walla has been waiting for.
+            That means transparent pricing, high-end documentation, and a level of professionalism that Walla Walla has been waiting for.
           </p>
           <ul className={styles.features}>
-            <li>Drone-Inspected Work Quality</li>
-            <li>Licensed, Bonded, and Insured</li>
-            <li>24/7 Emergency Support</li>
-            <li>Energy Efficiency Specialists</li>
+            <li>
+              <strong>Itemized Transparency:</strong>
+              <span>Know the cost before the work begins.</span>
+            </li>
+            <li>
+              <strong>Visual Verification:</strong>
+              <span>We document our work so you can see the quality behind the walls.</span>
+            </li>
+            <li>
+              <strong>Local Reliability:</strong>
+              <span>Fully licensed and ready to serve our neighbors.</span>
+            </li>
+            <li>
+              <strong>Emergency Ready:</strong>
+              <span>Round-the-clock service for critical repairs.</span>
+            </li>
           </ul>
         </div>
-        <div className={styles.aboutVideo}>
-          <video autoPlay muted loop playsInline className={styles.miniVideo}>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-hand-turning-on-a-light-switch-41661-large.mp4" type="video/mp4" />
-          </video>
+        <div className={styles.aboutImage}>
+          <img src="/Logo.jpeg" alt="Bright Side Electric Logo" className={styles.logoImage} />
         </div>
       </section>
     </div>

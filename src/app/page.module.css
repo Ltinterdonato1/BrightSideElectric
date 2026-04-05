@@ -3,14 +3,14 @@
 }
 
 .servicesSection {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 8rem 2rem;
 }
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem; /* Increased from 5rem to move boxes down */
 }
 
 .sectionHeader h2 {
@@ -26,19 +26,24 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 4rem;
+  justify-content: center;
 }
 
 .aboutSection {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.03);
   display: flex;
   align-items: center;
   gap: 4rem;
-  padding: 8rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 6rem 4rem;
+  max-width: 1400px;
+  margin: 4rem auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
+
 
 .aboutContent {
   flex: 1;
@@ -56,17 +61,17 @@
 
 .features {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
 .features li {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 600;
-  color: #fff;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  padding-left: 2rem;
 }
 
 .features li::before {
@@ -74,9 +79,23 @@
   color: var(--secondary);
   font-weight: 900;
   font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
-.aboutVideo {
+.features li strong {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.features li span {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.aboutImage {
   flex: 1;
   position: relative;
   border-radius: 12px;
@@ -85,9 +104,11 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.miniVideo {
+.logoImage {
   width: 100%;
+  height: auto;
   display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 968px) {
