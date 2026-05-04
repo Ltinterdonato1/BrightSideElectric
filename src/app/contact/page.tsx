@@ -11,7 +11,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    serviceType: 'Residential',
+    serviceType: 'Residential', // Default value
     address: '',
     state: 'WA',
     message: ''
@@ -58,7 +58,7 @@ export default function ContactPage() {
         name: '',
         email: '',
         phone: '',
-        serviceType: 'Residential',
+        serviceType: 'Residential', // Reset to default
         address: '',
         state: 'WA',
         message: ''
@@ -158,9 +158,10 @@ export default function ContactPage() {
               >
                 <option value="Residential">Residential</option>
                 <option value="Commercial">Commercial</option>
+                <option value="Solar & EV">Solar & EV</option> {/* Updated to match */}
                 <option value="Storefront">Storefront</option>
-                <option value="School/Industrial">School/Industrial</option>
-                <option value="Solar/EV">Solar/EV</option>
+                <option value="Schools">Schools</option> {/* Corrected from School/Industrial */}
+                <option value="Security">Security</option> {/* Added missing Security */}
               </select>
             </div>
           </div>

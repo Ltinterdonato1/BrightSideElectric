@@ -46,10 +46,10 @@
 
 .linksGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Two columns for desktop/tablet */
   gap: 2rem;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: center; /* Centers text within columns */
 }
 
 .column h4 {
@@ -63,7 +63,7 @@
 .column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Centers items horizontally within the column */
   gap: 0.75rem;
 }
 
@@ -94,6 +94,14 @@
   font-family: monospace;
   letter-spacing: 0.05em;
   opacity: 0.8;
+  display: inline-block; /* Ensures spans can be centered and have margin */
+  margin: 0 0.5rem; /* Add horizontal spacing between license lines */
+  text-align: center; /* Ensure text within span is centered if needed */
+}
+
+/* This section was previously for contact/licenses and is now integrated into the column */
+.centeredLicenses {
+  /* This class is no longer needed as license items are in the column */
 }
 
 .socials {
@@ -117,9 +125,11 @@
   font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
+/* Media queries */
+/* Default for mobile is handled by single column */
+@media (max-width: 767px) { /* Mobile */
   .linksGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column on mobile */
     gap: 2rem;
   }
   

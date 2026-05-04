@@ -1,45 +1,26 @@
 .hero {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: 100vh; /* Full viewport height */
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background-color: var(--background);
+  align-items: center;
+  overflow: hidden; /* Ensures background stays within bounds */
+  color: white;
+  text-align: center;
+  /* Applying linear gradient background to match service pages */
+  background: linear-gradient(135deg, var(--primary) 0%, #1e293a 100%);
 }
 
-.videoWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+.imageBackground {
+  /* This div is no longer needed for a static gradient background, but keep structure if it has other purposes, or remove if it becomes redundant. */
+  /* For now, assume it's still part of the structure but won't contain the img */
+  display: none; /* Hide if not needed, or adapt if it holds overlays */
 }
 
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.iframeWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw; /* 16:9 */
-  min-height: 100vh;
-  min-width: 177.77vh; /* 16:9 */
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+.backgroundImage {
+  /* Styles for the image element are not needed for gradient background */
+  display: none; /* Hide if not needed */
 }
 
 .overlay {
@@ -48,55 +29,54 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Subtle dark overlay without the heavy blend at the bottom */
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 15, 30, 0.3) 0%,
-    rgba(10, 15, 30, 0.4) 100%
-  );
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay to improve text readability */
+  z-index: 1; /* Above background, below content */
 }
 
 .content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-  max-width: 900px;
-  padding: 0 2rem;
+  position: relative; /* Needed to position content above background/overlay */
+  z-index: 2; /* Above overlay */
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .title {
-  font-size: 5rem;
-  font-weight: 900;
-  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
   line-height: 1.1;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  color: var(--secondary);
-  opacity: 0;
-  animation: fadeInOut 2.5s ease-in-out forwards;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
 }
 
 .subtitle {
   font-size: 1.5rem;
-  color: var(--text);
-  margin-bottom: 3rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: fadeInOut 2.5s ease-in-out 0.4s forwards;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
 }
 
-@media (max-width: 768px) {
+.cta {
+  display: inline-block; /* Ensures btn-primary styling works */
+}
+
+@media (max-width: 1024px) {
   .title {
     font-size: 3rem;
   }
   .subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-At-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .subtitle {
     font-size: 1.1rem;
+  }
+  .content {
+    padding: 1rem;
   }
 }

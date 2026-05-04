@@ -5,7 +5,7 @@
 .servicesSection {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 8rem 2rem;
+  padding: 3rem 2rem; /* Adjusted padding from previous step */
 }
 
 .sectionHeader {
@@ -26,10 +26,25 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 4rem;
+  grid-template-columns: 1fr; /* Default: stacked on mobile */
+  gap: 4rem; /* Increased gap for better spacing */
   justify-content: center;
 }
+
+/* Small tablet breakpoint: two columns */
+@media (min-width: 576px) { /* Adjusted breakpoint to apply to smaller tablets as well */
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablet */
+  }
+}
+
+/* Desktop breakpoint: three cards in a line */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* Remains 3 columns for desktop */
+  }
+}
+
 
 .aboutSection {
   background: rgba(255, 255, 255, 0.03);
@@ -68,11 +83,11 @@
 
 .features li {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  position: relative;
-  padding-left: 2rem;
-}
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+    padding-left: 2rem;
+  }
 
 .features li::before {
   content: "✓";
@@ -100,7 +115,7 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 4Irempx rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -121,6 +136,20 @@
     justify-items: center;
   }
   
+  .sectionHeader h2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Mobile adjustments for services section */
+@media (max-width: 767px) { /* Mobile devices */
+  .servicesSection {
+    padding: 3rem 3rem; /* Increased horizontal padding */
+  }
+  .grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 2rem; /* Reduced gap for mobile */
+  }
   .sectionHeader h2 {
     font-size: 2.5rem;
   }

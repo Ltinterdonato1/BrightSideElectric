@@ -1,21 +1,17 @@
+"use client";
+
 import VideoHero from '@/components/VideoHero';
 import ServiceCard from '@/components/ServiceCard';
-import { Home, Building2, Store, School, Shield, Zap, Sun } from 'lucide-react';
+import { Home, Building2, Store, School, Shield, Zap, Sun } from 'lucide-react'; // Ensure these icons are imported
 import styles from './page.module.css';
 
 export default function LandingPage() {
   return (
-    <div className={styles.container}>
-      <VideoHero 
-        videoUrl="https://www.youtube.com/watch?v=ChEs3fdkNCc"
-        title="Next Generation of Power"
-        subtitle="Residential • Commercial • Solar"
-        ctaText="Get a Free Estimate"
-        ctaLink="/contact"
-      />
-
+    <div>
       <section className={styles.servicesSection}>
         <div className={styles.sectionHeader}>
+          <br />
+          <br />
           <h2>Bringing the Bright Side </h2>
           <h2>to Every Project</h2>
         </div>
@@ -39,6 +35,25 @@ export default function LandingPage() {
             Icon={Sun}
             href="/solar"
           />
+          {/* New Service Cards */}
+          <ServiceCard 
+            title="Storefronts"
+            description="Electrical solutions for retail spaces, ensuring optimal lighting and power for your business."
+            Icon={Store}
+            href="/storefronts" 
+          />
+          <ServiceCard 
+            title="Schools"
+            description="Electrical systems tailored for educational institutions, from classrooms to common areas."
+            Icon={School}
+            href="/schools"
+          />
+          <ServiceCard 
+            title="Security"
+            description="Comprehensive security system installations, including alarms and surveillance cameras."
+            Icon={Shield} 
+            href="/security"
+          />
         </div>
       </section>
 
@@ -46,7 +61,7 @@ export default function LandingPage() {
         <div className={styles.aboutContent}>
           <h2>Why Bright Side?</h2>
           <p>
-            Unlike other contractors who focus on the minimum, we focus on the **Bright Side**. 
+            Unlike other contractors who focus on the minimum, we focus on the Bright Side. 
             That means transparent pricing, high-end documentation, and a level of professionalism that Walla Walla has been waiting for.
           </p>
           <ul className={styles.features}>

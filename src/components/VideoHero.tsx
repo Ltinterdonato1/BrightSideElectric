@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import styles from './VideoHero.module.css';
 
 interface VideoHeroProps {
-  videoUrl: string;
+  // videoUrl prop is no longer directly used for embedding, but kept for interface consistency
+  videoUrl: string; 
   title: string;
   subtitle: string;
   ctaText: string;
@@ -16,8 +17,10 @@ const VideoHero = ({ videoUrl, title, subtitle, ctaText, ctaLink }: VideoHeroPro
   
   useEffect(() => {
     setMounted(true);
+    // No timer needed for static image or gradient background, it should be visible immediately
   }, []);
 
+  // getYouTubeId function is no longer relevant for a static image, but kept for structure
   const getYouTubeId = (url: string) => {
     if (!url) return null;
     try {
@@ -33,53 +36,14 @@ const VideoHero = ({ videoUrl, title, subtitle, ctaText, ctaLink }: VideoHeroPro
     }
   };
 
-  const youtubeId = getYouTubeId(videoUrl);
+  // const youtubeId = getYouTubeId(videoUrl); // Not used for image or gradient
 
   return (
     <section className={styles.hero}>
-      <div className={styles.videoWrapper}>
-        {mounted && youtubeId ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&enablejsapi=1&start=0&end=20`}
-            allow="autoplay; encrypted-media; picture-in-picture"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '100vw',
-              height: '100vh',
-              minWidth: '177.77vh',
-              minHeight: '56.25vw',
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
-              border: 'none',
-              zIndex: 0
-            }}
-            title="Background Video"
-          />
-        ) : mounted && videoUrl && !youtubeId ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                zIndex: 0
-            }}
-          >
-            <source src={videoUrl} type="video/mp4" />
-          </video>
-        ) : (
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: '#0a0f1e', zIndex: 0 }} />
-        )}
-        <div className={styles.overlay} />
-      </div>
+      {/* Background is now handled by CSS gradient on .hero */}
+      {/* Image/video specific divs are removed or adapted */}
+      
+      <div className={styles.overlay} /> {/* Overlay remains for text readability */}
       
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>

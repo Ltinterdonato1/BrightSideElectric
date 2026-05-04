@@ -46,17 +46,261 @@
   letter-spacing: 0.05em;
 }
 
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+  /* display: none; removed from default, controlled by media queries and class */
+}
+
+.menuButton svg {
+  display: block; /* Ensure SVG scales correctly */
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: flex-end; /* Push content to the right */
+  align-items: flex-start; /* Align to top */
+  z-index: 110; /* Above header */
+  padding-top: 20px; /* Add some padding at the very top */
+  padding-right: 20px; /* Add some padding at the very right */
+}
+
+.modalContent {
+  background: var(--nav-bg); /* Use same background as header */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  max-height: 100vh; /* Ensure it fits viewport height */
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative; /* Needed for absolute positioning of close button */
+  margin-top: 20px; /* Align with padding-top of overlay */
+  margin-right: 20px; /* Align with padding-right of overlay */
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.modalCloseButton:hover {
+  color: var(--secondary);
+}
+
+.modalNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.modalNav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.modalNav a:hover {
+  color: var(--secondary);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+}
+
+.container {
+  max-width: 1600px; /* Increased to push items further apart */
+  margin: 0 auto;
+  padding: 0 4rem; /* Balanced padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.icon {
+  color: var(--secondary);
+}
+
+.electric {
+  color: var(--secondary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* Increased gap for better spread */
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+  /* display: none; removed from default, controlled by media queries and class */
+}
+
+.menuButton svg {
+  display: block; /* Ensure SVG scales correctly */
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: flex-end; /* Push content to the right */
+  align-items: flex-start; /* Align to top */
+  z-index: 110; /* Above header */
+  padding-top: 20px; /* Add some padding at the very top */
+  padding-right: 20px; /* Add some padding at the very right */
+}
+
+.modalContent {
+  background: var(--nav-bg); /* Use same background as header */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  max-height: 100vh; /* Ensure it fits viewport height */
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative; /* Needed for absolute positioning of close button */
+  margin-top: 20px; /* Align with padding-top of overlay */
+  margin-right: 20px; /* Align with padding-right of overlay */
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.modalCloseButton:hover {
+  color: var(--secondary);
+}
+
+.modalNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.modalNav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.modalNav a:hover {
+  color: var(--secondary);
+}
+
+/* Media queries */
 @media (max-width: 1024px) {
-  .nav {
-    gap: 1.5rem;
-  }
   .container {
     padding: 0 2rem;
   }
+  /* Adjust modal content for smaller tablet screens if needed */
+  .modalContent {
+    max-width: 350px;
+    margin-right: 10px;
+  }
 }
 
-@media (max-width: 768px) {
+/* Tablet and Desktop: Show full nav, also show menu button for secondary services */
+@media (min-width: 768px) {
   .nav {
+    display: flex; /* Ensure nav is visible */
+    gap: 2rem; /* Slightly reduced gap for tighter nav */
+  }
+  /* Ensure 'Get a Quote' is visible and aligned */
+  .nav a.btn-primary { /* Assuming btn-primary is applied to Get a Quote */
+    margin-left: auto; /* Push it to the right */
+    order: 2; /* Make it appear after other nav items */
+  }
+  .menuButton {
+    display: block; /* Show menu button on tablet and desktop */
+    order: 3; /* Position it after 'Get a Quote' */
+    margin-left: 1rem; /* Space between 'Get a Quote' and menu button */
+  }
+  /* Adjust modal overlay to align with header's container padding */
+  .modalOverlay {
+    padding-right: calc(2rem + 20px); /* Container padding + button padding */
+  }
+  .modalContent {
+    margin-right: calc(2rem + 20px); /* Align with overlay padding */
+  }
+}
+
+/* Mobile: Show menu button, hide full nav */
+@media (max-width: 767px) {
+  .nav {
+    display: none; /* Hide desktop nav on mobile */
+  }
+  .menuButton {
+    display: block; /* Show menu button on mobile */
+  }
+
+  /* Hide menu button when modal is open on mobile */
+  .hiddenWhenModalOpen {
     display: none;
   }
 }
+

@@ -16,7 +16,6 @@ const ServiceCard = ({ title, description, Icon, href }: ServiceCardProps) => {
       </div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
-      <div className={styles.learnMore}>Learn More &rarr;</div>
     </a>
   );
 };
