@@ -3,8 +3,14 @@
 import Link from 'next/link';
 import { Zap, Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
-import { useState, useEffect, useRef } from 'react'; // Import useRef
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+
+interface NavLink {
+  href: string;
+  text: string;
+  isPrimary?: boolean; // Optional property
+}
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,18 +21,14 @@ const Header = () => {
   // Function to check if the current view is mobile
   const checkIsMobile = () => {
     if (headerRef.current) {
-      // Check computed style for display of menuButton, which is visible only on mobile
       const menuButtonElement = headerRef.current.querySelector(`.${styles.menuButton}`);
       if (menuButtonElement) {
         const computedStyle = window.getComputedStyle(menuButtonElement);
         setIsMobile(computedStyle.display !== 'none');
       } else {
-        // Fallback if menuButton not found (though it should be)
-        // A more robust check might be window.innerWidth < 768
         setIsMobile(window.innerWidth < 768);
       }
     } else {
-      // Fallback if headerRef is not yet available
       setIsMobile(window.innerWidth < 768);
     }
   };
@@ -53,8 +55,8 @@ const Header = () => {
   }, [isModalOpen]);
 
   // Determine the links to display in the modal
-  const getModalLinks = (isMobileView: boolean) => {
-    const allServiceLinks = [
+  const getModalLinks = (isMobileView: boolean): NavLink[] => {
+    const allLinks: NavLink[] = [
       { href: '/residential', text: 'Residential' },
       { href: '/commercial', text: 'Commercial' },
       { href: '/solar', text: 'Solar' },
@@ -63,21 +65,21 @@ const Header = () => {
       { href: '/security', text: 'Security' },
     ];
 
-    const secondaryServiceLinks = [
+    const secondaryLinks: NavLink[] = [
       { href: '/storefront', text: 'Storefront' },
       { href: '/schools', text: 'Schools' },
       { href: '/security', text: 'Security' },
     ];
 
-    const contactLink = { href: '/contact', text: 'Get a Quote', isPrimary: true };
+    const contactLink: NavLink = { href: '/contact', text: 'Get a Quote', isPrimary: true };
 
     if (isMobileView) {
       // For mobile, show all services and contact link. Replace current service with 'Home'.
-      const linksToShow = allServiceLinks.filter(link => link.href !== pathname);
+      const linksToShow = allLinks.filter(link => link.href !== pathname);
       
       // Determine if 'Home' link should be added
       let homeLinkAdded = false;
-      if (pathname !== '/' && pathname !== '/contact' && !allServiceLinks.some(link => link.href === pathname)) {
+      if (pathname !== '/' && pathname !== '/contact' && !allLinks.some(link => link.href === pathname)) {
           // If not on home, contact, or a service page, no 'Home' needed.
           // If on a service page, 'Home' is needed.
       } else if (pathname !== '/' && pathname !== '/contact') {
@@ -90,14 +92,14 @@ const Header = () => {
 
     } else {
       // For desktop/tablet, show only secondary services and contact link in modal
-      return [...secondaryServiceLinks, contactLink];
+      return [...secondaryLinks, contactLink];
     }
   };
 
-  const modalLinks = getModalLinks(isMobile);
+  const modalLinks: NavLink[] = getModalLinks(isMobile);
 
   return (
-    <header className={styles.header} ref={headerRef}> {/* Attach ref to header */}
+    <header className={styles.header} ref={headerRef}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           <Zap size={32} className={styles.icon} />
@@ -111,7 +113,6 @@ const Header = () => {
           <Link href="/contact" className="btn-primary">Get a Quote</Link>
         </nav>
 
-        {/* The menuButton is always rendered, CSS controls its visibility */}
         <button className={`${styles.menuButton} ${isModalOpen ? styles.hiddenWhenModalOpen : ''}`} onClick={toggleModal}>
           {isModalOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

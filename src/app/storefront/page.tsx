@@ -1,4 +1,4 @@
-import { ShoppingBasket, Lightbulb, Zap, ShieldCheck, Tool, Building } from 'lucide-react'; // Added relevant icons
+import { ShoppingBasket, Lightbulb, Zap, ShieldCheck, Building } from 'lucide-react'; // Removed 'Tool'
 import styles from './page.module.css';
 
 export default function StorefrontPage() {
@@ -31,7 +31,7 @@ export default function StorefrontPage() {
     {
       title: "Emergency Power & Backup",
       description: "Ensure business continuity with backup power solutions for critical operations.",
-      icon: <Zap size={24} />
+      icon: <Zap size={24} /> 
     }
   ];
 
